@@ -29,6 +29,7 @@ app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.
 mongo = PyMongo(app)
 
 from marco import *
+from cici import *
 
 
 
@@ -179,6 +180,10 @@ def papaMurphys():
 
 def marcos():
 	response = marcoPizza()
+	cicis()
+
+def cicis():
+	response = ciciPizza()
 
 
 
