@@ -20,7 +20,7 @@ def fetchData():
 @app.route('/', methods = ["GET"])
 def index():
 
-	sc.every(1).minutes.do(main)
+	sc.every(30).minutes.do(main)
 
 	while True:
 		sc.run_pending()

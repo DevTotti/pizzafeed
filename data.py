@@ -93,7 +93,7 @@ def saveToCloud(ada, bada, cada, dada, fada):
 
 		print("Data saved Successfully!")
 
-		response = "Seccess!"
+		response = "Success!"
 
 	except Exception as error:
 		print("Error saving into database: "+str(error))
