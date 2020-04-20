@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
-import time
+import time, os
 import schedule as sc
 print("Working")
 from flask_pymongo import PyMongo
