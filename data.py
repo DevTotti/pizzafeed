@@ -13,8 +13,13 @@ from flask import Flask
 from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
 chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+chrome_bin = os.environ.get('GOOGLE_CHROME_SHIM', None)
+chrome_options.binary_location = chrome_bin
 
 
 
@@ -28,7 +33,8 @@ from marco import *
 
 
 def chrome_drive(website, link):
-	driver = webdriver.Chrome(executable_path = '/home/devtotti/Workspace/extensions/chromedriver_linux64/chromedriver', options=chrome_options)
+	#driver = webdriver.Chrome(executable_path = '/home/devtotti/Workspace/extensions/chromedriver_linux64/chromedriver', options=chrome_options)#for local test remove comments
+	driver = webdriver.Chrome(executable_path = CHROMEDRIVER_PATH ,options=chrome_options)#for deployment, remove comments
 
 	driver.wait = WebDriverWait(driver, 5)
 
@@ -152,6 +158,7 @@ def papaMurphys():
 
 def marcos():
 	response = marcoPizza()
+
 
 
 
