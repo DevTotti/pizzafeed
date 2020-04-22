@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 import time, os
-import schedule as sc
+#import schedule as sc
 print("Working")
 from flask_pymongo import PyMongo
 from flask import Flask
@@ -32,12 +32,13 @@ from marco import *
 
 
 
-def chrome_drive(website, link):
+def chrome_drive(firm, website, link):
 	#driver = webdriver.Chrome(executable_path = '/home/devtotti/Workspace/extensions/chromedriver_linux64/chromedriver', options=chrome_options)#for local test remove comments
 	driver = webdriver.Chrome(executable_path = CHROMEDRIVER_PATH ,options=chrome_options)#for deployment, remove comments
 
 	driver.wait = WebDriverWait(driver, 5)
 
+	firm = str(firm)
 	company = str(website)
 	url = str(link)
 	
@@ -70,37 +71,55 @@ def chrome_drive(website, link):
 
 		print(but1, but2, but5, disctype)
 
-		response = saveToCloud(company, but1, but2, but5, disctype)
+		response = saveToCloud(firm, company, but1, but2, but5, disctype)
 
 		print(response)
 
 
 
-def saveToCloud(ada, bada, cada, dada, fada):
+def saveToCloud(firm, ada, bada, cada, dada, fada):
 	db = mongo.db.coupons
 
-
+	firm = str(firm)
 	website = str(ada)
 	discount = str(bada)
 	summary = str(cada)
 	code = str(dada)
 	discountType = str(fada)
 
-	data = {"websiteName":website, "pizzaSummary": summary, "discount":discount, "couponCode":code, "discountType":discountType}
+	count = []
 
-	try:
-		save = db.insert_one(data)
+	for field in db.find():
 
-		print("Data saved Successfully!")
+		if str(field['company']) == firm and str(field['websiteName']) == website and str(field['pizzaSummary']) == summary and str(field['discount']) == discount and str(field['couponCode']) == code and str(field['discountType']) == discountType:
+			count.append(1)
 
-		response = "Success!"
-
-	except Exception as error:
-		print("Error saving into database: "+str(error))
-		response = "Failed!"
+		else:
+			pass
 
 
-	return response
+
+
+	if len(count) > 0:
+		print("Data exists in the database")
+
+
+	else:
+		data = {"company":firm, "websiteName":website, "pizzaSummary": summary, "discount":discount, "couponCode":code, "discountType":discountType}
+
+		try:
+			save = db.insert_one(data)
+
+			print("Data saved Successfully!")
+
+			response = "Success!"
+
+		except Exception as error:
+			print("Error saving into database: "+str(error))
+			response = "Failed!"
+
+
+		return response
 
 
 
@@ -115,8 +134,8 @@ def littleCeasars():
 	print("LittleCaesars")
 	website = "https://littlecaesars.com/"
 	url = "https://slickdeals.net/coupons/little-caesars/"
-	#print(website)
-	chrome_drive(website, url)
+	firm = "littleCeasars"
+	chrome_drive(firm, website, url)
 	papaJohns()
 
 
@@ -125,8 +144,8 @@ def papaJohns():
 	print("PapaJohn's")
 	website = "https://www.papajohns.com/promotional-offers/"
 	url = "https://slickdeals.net/coupons/papa-johns/"
-	#print(website)
-	chrome_drive(website, url)
+	firm = "papaJohns"
+	chrome_drive(firm, website, url)
 	dominosPizzas()
 
 
@@ -134,8 +153,8 @@ def dominosPizzas():
 	print("Domino's Pizza")
 	website = "https://www.dominos.com"
 	url = "https://slickdeals.net/coupons/dominos-pizza/"
-	#print(website)
-	chrome_drive(website, url)
+	firm = "dominos"
+	chrome_drive(firm, website, url)
 	pizzaHut()
 
 
@@ -143,7 +162,8 @@ def pizzaHut():
 	print("PizzaHut Pizza")
 	website = "https://www.pizzahut.com/"
 	url = "https://slickdeals.net/coupons/pizza-hut/"
-	chrome_drive(website, url)
+	firm = "pizzaHut"
+	chrome_drive(firm, website, url)
 	papaMurphys()
 
 
@@ -151,7 +171,8 @@ def papaMurphys():
 	print("papaMurphy's")
 	website = "https://www.papamurphys.com/"
 	url = "https://slickdeals.net/coupons/papa-murphys/"
-	chrome_drive(website, url)
+	firm = "papaMurphys"
+	chrome_drive(firm, website, url)
 	marcos()
 
 
@@ -161,5 +182,5 @@ def marcos():
 
 
 
-
+#main()
 
