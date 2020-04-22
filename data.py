@@ -56,7 +56,7 @@ def chrome_drive(firm, website, link):
 
 		print(but1, but2, but5, disc_type)
 
-		response = saveToCloud(company, but1, but2, but5, disc_type)
+		response = saveToCloud(firm, company, but1, but2, but5, disc_type)
 
 		print(response)
 		
