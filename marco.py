@@ -18,6 +18,7 @@ mongo = PyMongo(app)
 
 
 def marcoPizza():
+	firm = "marcosPizza"
 
 	url = "https://www.marcos.com/"
 	page = requests.get(url)
@@ -41,7 +42,7 @@ def marcoPizza():
 	print( cp)
 
 
-	data = {"websiteName":wn, "pizzaSummary":p_typ,  "discount":price,  "couponCode":cp, "discountType":"coupon"}
+	data = {"company":firm, "websiteName":wn, "pizzaSummary":p_typ,  "discount":price,  "couponCode":cp, "discountType":"coupon"}
 
 	db = mongo.db.coupons
 
@@ -62,6 +63,7 @@ def marcoPizza():
 
 
 #marcoPizza()
+
 
 
 

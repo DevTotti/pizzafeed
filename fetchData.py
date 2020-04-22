@@ -24,7 +24,7 @@ def queryDB():
 
 		for field in db.find():
 			
-
+			firm = str(field['company'])
 			companyName = str(field['websiteName'])
 			summary = str(field['pizzaSummary'])
 			discount = str(field['discount'])
@@ -33,12 +33,12 @@ def queryDB():
 
 			print("company_url:"+companyName, "coupons:"+coupon)
 
-			data = {"websiteName":companyName, "pizzaSummary": summary, "discount":discount, "couponCode":coupon, "discountType":discountType}
+			data = {"company":firm, "websiteName":companyName, "pizzaSummary": summary, "discount":discount, "couponCode":coupon, "discountType":discountType}
 			database.append(data)
 
 	
 	except Exception as error:
-		print("Collections retrieval failed!: ")
+		print("Collections retrieval failed!: "+str(error))
 		
 
 
@@ -47,4 +47,56 @@ def queryDB():
 
 
 
+def queryParams(firm, discountType):
+	database = []
+	company = str(firm)
+	discType = str(discountType)
+	try:
+		db = mongo.db.coupons
+		print("Collections retrieval Successful! ")
+
+		for field in db.find():
+
+			if str(field['company']) == company and str(field['discountType']) == discType:
+				firm = str(field['company'])
+				companyName = str(field['websiteName'])
+				summary = str(field['pizzaSummary'])
+				discount = str(field['discount'])
+				coupon = str(field['couponCode'])
+				discountType = str(field['discountType'])
+
+				print("company_url:"+companyName, "coupons:"+coupon)
+
+				data = {"company":firm, "websiteName":companyName, "pizzaSummary": summary, "discount":discount, "couponCode":coupon, "discountType":discountType}
+				database.append(data)
+
+			else:
+				pass
+
+	
+	
+
+	except Exception as error:
+		print("Collections retrieval failed!: "+str(error))
+
+
+	return database
+
+
+
+def paginate(page, data):
+	#algorithm for the pagination
+	print("Paginating")
+	database = data
+	number = int(page) - 1
+	start = (number*5)
+	stop = (start + 5)
+	data = database[start:stop]
+
+	response = data
+	
+	return response
+
+
 #queryDB()
+

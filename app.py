@@ -8,23 +8,42 @@ from data import *
 app = Flask(__name__)
 
 
-@app.route("/fetch", methods = ["GET"])
+@app.route("/fetch", methods = ["GET", "POST"])
 def fetchData():
-	response = queryDB()
-	response = {"response": response}
 
-	return jsonify(response)
+	if request.method == 'GET':
+		response = queryDB()
+		response = {"response": response}
+
+		return jsonify(response)
+
+	elif request.method == 'POST':
+		company = request.get_json()["company"]
+		discountType =  request.get_json()["discountType"]
+		response = queryParams(company, discountType)
+		
+		if request.get_json()["page"] != "":
+			page = request.get_json()["page"]
+			response = paginate(page, response)
+			response = {"response":response}
+			return jsonify(response)
+
+		else:
+			response = {"response":response}
+			return jsonify(response)
+			
 
 
 
 @app.route('/', methods = ["GET"])
 def index():
 
-	sc.every(30).minutes.do(main)
+	#sc.every(30).minutes.do(main)
 
 	while True:
-		sc.run_pending()
-		time.sleep(5)
+		#sc.run_pending()
+		main()
+		time.sleep(1800)
 
 
 if __name__ == "__main__":
@@ -32,4 +51,3 @@ if __name__ == "__main__":
 
 
 
-	
