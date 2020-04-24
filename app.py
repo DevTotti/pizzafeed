@@ -35,7 +35,7 @@ def fetchData():
 
 
 
-@app.route('/', methods = ["GET"])
+@app.route('/fuckoff', methods = ["GET"])
 def index():
 
 	#sc.every(30).minutes.do(main)
