@@ -30,12 +30,14 @@ mongo = PyMongo(app)
 
 from marco import *
 from cici import *
+from offers import *
+
 
 
 
 def chrome_drive(firm, website, link):
-	#driver = webdriver.Chrome(executable_path = '/home/devtotti/Workspace/extensions/chromedriver_linux64/chromedriver', options=chrome_options)#for local test remove comments
-	driver = webdriver.Chrome(executable_path = CHROMEDRIVER_PATH ,options=chrome_options)#for deployment, remove comments
+	driver = webdriver.Chrome(executable_path = '/home/devtotti/Workspace/extensions/chromedriver_linux64/chromedriver', options=chrome_options)#for local test remove comments
+	#driver = webdriver.Chrome(executable_path = CHROMEDRIVER_PATH ,options=chrome_options)#for deployment, remove comments
 
 	driver.wait = WebDriverWait(driver, 5)
 
@@ -103,6 +105,7 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 
 	if len(count) > 0:
 		print("Data exists in the database")
+		response = "Success"
 
 
 	else:
@@ -127,6 +130,7 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 #company names
 def main():
 	littleCeasars()
+	driver.close()
 
 
 
@@ -147,7 +151,7 @@ def papaJohns():
 	url = "https://slickdeals.net/coupons/papa-johns/"
 	firm = "papaJohns"
 	chrome_drive(firm, website, url)
-	dominosPizzas()
+	#dominosPizzas()
 
 
 def dominosPizzas():
@@ -179,13 +183,33 @@ def papaMurphys():
 
 
 def marcos():
-	response = marcoPizza()
+	print("marcosPizza")
+	firm = "marcosPizza"
+	website = "https://www.marcos.com/"
+	url = "https://slickdeals.net/coupons/marcos-pizza/"
+	chrome_drive(firm, website, url)
 	cicis()
 
 def cicis():
 	response = ciciPizza()
+	caliKitchen()
+	
+
+
+def caliKitchen():
+	print("california-pizza-kitchen")
+	url = "https://www.offers.com/california-pizza-kitchen/"
+	firm = "cpkPizza"
+	website = "https://www.cpk.com/"
+	response = crawl_exctract(url, firm, website)
+	sBarro()
 
 
 
-#main()
+def sBarro():
+	print("sBarro pizza")
+	url = "https://www.offers.com/sbarro/"
+	firm = "sbarro"
+	website = "https://sbarro.com/"
+	response = crawl_exctract(url, firm, website)
 
