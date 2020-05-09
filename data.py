@@ -151,7 +151,7 @@ def papaJohns():
 	url = "https://slickdeals.net/coupons/papa-johns/"
 	firm = "papaJohns"
 	chrome_drive(firm, website, url)
-	#dominosPizzas()
+	dominosPizzas()
 
 
 def dominosPizzas():
