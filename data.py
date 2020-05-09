@@ -130,7 +130,7 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 #company names
 def main():
 	littleCeasars()
-	driver.close()
+	#driver.close()
 
 
 
