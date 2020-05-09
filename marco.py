@@ -42,28 +42,44 @@ def marcoPizza():
 	print( cp)
 
 
-	data = {"company":firm, "websiteName":wn, "pizzaSummary":p_typ,  "discount":price,  "couponCode":cp, "discountType":"coupon"}
+	
 
 	db = mongo.db.coupons
 
-	try:
-		save = db.insert_one(data)
 
-		print("Data saved Successfully!")
+	count = []
+	for field in db.find():
 
-		response = "Seccess!"
+		if str(field['company']) == firm and str(field['websiteName']) == wn and str(field['pizzaSummary']) == p_typ and str(field['discount']) == price and str(field['couponCode']) == cp and str(field['discountType']) == "COUPON":
+			count.append(1)
 
-	except Exception as error:
-		print("Error saving into database: "+str(error))
-		response = "Failed!"
+		else:
+			pass
+
+	if len(count) > 0:
+		print("Data exists in database")
+
+	else:
+		data = {"company":firm, "websiteName":wn, "pizzaSummary":p_typ,  "discount":price,  "couponCode":cp, "discountType":"COUPON"}
+
+		try:
+			save = db.insert_one(data)
+
+			print("Data saved Successfully!")
+
+			response = "Seccess!"
+			return response
+
+		except Exception as error:
+			print("Error saving into database: "+str(error))
+			response = "Failed!"
+			return response
 
 
-	return response
 
 
 
 #marcoPizza()
-
 
 
 
