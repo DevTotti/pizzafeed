@@ -173,9 +173,9 @@ def pizzaHut():
 
 def marcos():
 	print("marcosPizza")
-	firm = "marcosPizza"
 	website = "https://www.marcos.com/"
 	url = "https://slickdeals.net/coupons/marcos-pizza/"
+	firm = "marcosPizza"
 	chrome_drive(firm, website, url)
 	papaMurphys()
 
