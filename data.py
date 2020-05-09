@@ -28,7 +28,7 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
-from marco import *
+#from marco import *
 from cici import *
 from offers import *
 
@@ -169,7 +169,16 @@ def pizzaHut():
 	url = "https://slickdeals.net/coupons/pizza-hut/"
 	firm = "pizzaHut"
 	chrome_drive(firm, website, url)
+	marcos()
+
+def marcos():
+	print("marcosPizza")
+	firm = "marcosPizza"
+	website = "https://www.marcos.com/"
+	url = "https://slickdeals.net/coupons/marcos-pizza/"
+	chrome_drive(firm, website, url)
 	papaMurphys()
+
 
 
 def papaMurphys():
@@ -178,17 +187,10 @@ def papaMurphys():
 	url = "https://slickdeals.net/coupons/papa-murphys/"
 	firm = "papaMurphys"
 	chrome_drive(firm, website, url)
-	marcos()
-
-
-
-def marcos():
-	print("marcosPizza")
-	firm = "marcosPizza"
-	website = "https://www.marcos.com/"
-	url = "https://slickdeals.net/coupons/marcos-pizza/"
-	chrome_drive(firm, website, url)
 	cicis()
+
+
+
 
 def cicis():
 	response = ciciPizza()
