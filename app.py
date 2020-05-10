@@ -3,6 +3,7 @@ from datetime import datetime
 from fetchData import *
 import schedule as sc
 from data import *
+from data1 import *
 
 
 app = Flask(__name__)
@@ -43,6 +44,8 @@ def index():
 	while True:
 		#sc.run_pending()
 		main()
+		time.sleep(90)
+		major()
 		time.sleep(1800)
 
 

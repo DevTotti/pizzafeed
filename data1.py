@@ -133,54 +133,56 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 	return response
 
 
-
-#company names
-def main():
-	#marcos()
-	littleCeasars()
-	#driver.close()
+def major():
+	marcos()
 
 
 
 
-def littleCeasars():
-	print("LittleCaesars")
-	website = "https://littlecaesars.com/"
-	url = "https://slickdeals.net/coupons/little-caesars/"
-	firm = "littleCeasars"
+def marcos():
+	print("marcosPizza")
+	firm = "marcosPizza"
+	website = "https://www.marcos.com/"
+	url = "https://slickdeals.net/coupons/marcos-pizza/"
 	driver = chrome_drive(firm, website, url)
-	papaJohns(driver)
+	papaMurphys(driver)
 
 
 
-def papaJohns(driver):
-	print("PapaJohn's")
-	website = "https://www.papajohns.com/promotional-offers/"
-	url = "https://slickdeals.net/coupons/papa-johns/"
-	firm = "papaJohns"
-	chrome_drive(firm, website, url)
-	dominosPizzas(driver)
-
-
-def dominosPizzas(driver):
-	print("Domino's Pizza")
-	website = "https://www.dominos.com"
-	url = "https://slickdeals.net/coupons/dominos-pizza/"
-	firm = "dominos"
-	chrome_drive(firm, website, url)
-	pizzaHut(driver)
-
-
-def pizzaHut(driver):
-	print("PizzaHut Pizza")
-	website = "https://www.pizzahut.com/"
-	url = "https://slickdeals.net/coupons/pizza-hut/"
-	firm = "pizzaHut"
+def papaMurphys(driver):
+	print("papaMurphy's")
+	website = "https://www.papamurphys.com/"
+	url = "https://slickdeals.net/coupons/papa-murphys/"
+	firm = "papaMurphys"
 	chrome_drive(firm, website, url)
 	driver.close()
+	cicis()
 
 
 
+
+def cicis():
+	response = ciciPizza()
+	caliKitchen()
+	
+
+
+def caliKitchen():
+	print("california-pizza-kitchen")
+	url = "https://www.offers.com/california-pizza-kitchen/"
+	firm = "cpkPizza"
+	website = "https://www.cpk.com/"
+	response = crawl_exctract(url, firm, website)
+	sBarro()
+
+
+
+def sBarro():
+	print("sBarro pizza")
+	url = "https://www.offers.com/sbarro/"
+	firm = "sbarro"
+	website = "https://sbarro.com/"
+	response = crawl_exctract(url, firm, website)
 
 
 
