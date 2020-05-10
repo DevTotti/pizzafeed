@@ -16,6 +16,11 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument("--disable-notifications")
+chrome_options.add_argument("--disable-default-apps")
+chrome_options.add_argument("--disable-media-source")
+chrome_options.add_argument("--mute-audio")
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
 CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
 chrome_bin = os.environ.get('GOOGLE_CHROME_SHIM', None)
@@ -129,6 +134,7 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 
 #company names
 def main():
+	#marcos()
 	littleCeasars()
 	#driver.close()
 
@@ -214,4 +220,11 @@ def sBarro():
 	firm = "sbarro"
 	website = "https://sbarro.com/"
 	response = crawl_exctract(url, firm, website)
+
+
+
+
+
+
+main()
 
