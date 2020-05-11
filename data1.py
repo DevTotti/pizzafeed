@@ -83,6 +83,8 @@ def chrome_drive(firm, website, link):
 
 		print(response)
 
+	return driver
+
 
 
 def saveToCloud(firm, ada, bada, cada, dada, fada):
@@ -128,7 +130,7 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 			response = "Failed!"
 
 
-		return response
+	return response
 
 
 def major():
@@ -142,17 +144,18 @@ def marcos():
 	firm = "marcosPizza"
 	website = "https://www.marcos.com/"
 	url = "https://slickdeals.net/coupons/marcos-pizza/"
-	chrome_drive(firm, website, url)
-	papaMurphys()
+	driver = chrome_drive(firm, website, url)
+	papaMurphys(driver)
 
 
 
-def papaMurphys():
+def papaMurphys(driver):
 	print("papaMurphy's")
 	website = "https://www.papamurphys.com/"
 	url = "https://slickdeals.net/coupons/papa-murphys/"
 	firm = "papaMurphys"
 	chrome_drive(firm, website, url)
+	driver.close()
 	cicis()
 
 

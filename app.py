@@ -44,7 +44,7 @@ def index():
 	while True:
 		#sc.run_pending()
 		main()
-		time.sleep(300)
+		time.sleep(90)
 		major()
 		time.sleep(1800)
 

@@ -83,6 +83,8 @@ def chrome_drive(firm, website, link):
 
 		print(response)
 
+	return driver
+
 
 
 def saveToCloud(firm, ada, bada, cada, dada, fada):
@@ -128,7 +130,7 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 			response = "Failed!"
 
 
-		return response
+	return response
 
 
 
@@ -146,36 +148,36 @@ def littleCeasars():
 	website = "https://littlecaesars.com/"
 	url = "https://slickdeals.net/coupons/little-caesars/"
 	firm = "littleCeasars"
-	chrome_drive(firm, website, url)
-	papaJohns()
+	driver = chrome_drive(firm, website, url)
+	papaJohns(driver)
 
 
 
-def papaJohns():
+def papaJohns(driver):
 	print("PapaJohn's")
 	website = "https://www.papajohns.com/promotional-offers/"
 	url = "https://slickdeals.net/coupons/papa-johns/"
 	firm = "papaJohns"
 	chrome_drive(firm, website, url)
-	dominosPizzas()
+	dominosPizzas(driver)
 
 
-def dominosPizzas():
+def dominosPizzas(driver):
 	print("Domino's Pizza")
 	website = "https://www.dominos.com"
 	url = "https://slickdeals.net/coupons/dominos-pizza/"
 	firm = "dominos"
 	chrome_drive(firm, website, url)
-	pizzaHut()
+	pizzaHut(driver)
 
 
-def pizzaHut():
+def pizzaHut(driver):
 	print("PizzaHut Pizza")
 	website = "https://www.pizzahut.com/"
 	url = "https://slickdeals.net/coupons/pizza-hut/"
 	firm = "pizzaHut"
 	chrome_drive(firm, website, url)
-	#marcos()
+	driver.close()
 
 
 
