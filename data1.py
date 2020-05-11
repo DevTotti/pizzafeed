@@ -155,6 +155,7 @@ def papaMurphys(driver):
 	url = "https://slickdeals.net/coupons/papa-murphys/"
 	firm = "papaMurphys"
 	chrome_drive(firm, website, url)
+	print("Closing chrome tabs")
 	driver.close()
 	cicis()
 

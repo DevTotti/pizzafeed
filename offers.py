@@ -85,7 +85,7 @@ def crawl_exctract(url, firm, website):
                     #print((p))
                 
 
-            data = {"company":firm, "websiteName":website, "PizzaSummary":p, "discount":ed, "couponCode":cp , "discountType":discType}
+            data = {"company":firm, "websiteName":website, "pizzaSummary":p, "discount":ed, "couponCode":cp , "discountType":discType}
 
 
             db = mongo.db.coupons
