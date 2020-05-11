@@ -177,6 +177,7 @@ def pizzaHut(driver):
 	url = "https://slickdeals.net/coupons/pizza-hut/"
 	firm = "pizzaHut"
 	chrome_drive(firm, website, url)
+	print("Closing chrome tabs")
 	driver.close()
 
 
