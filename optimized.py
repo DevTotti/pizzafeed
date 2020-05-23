@@ -40,50 +40,64 @@ from offers import *
 
 
 
-def chrome_drive(firm, website, link):
+def chrome_drive():
 	#driver = webdriver.Chrome(executable_path = '/home/devtotti/Workspace/extensions/chromedriver_linux64/chromedriver', options=chrome_options)#for local test remove comments
 	driver = webdriver.Chrome(executable_path = CHROMEDRIVER_PATH ,options=chrome_options)#for deployment, remove comments
 
 	driver.wait = WebDriverWait(driver, 5)
 
-	firm = str(firm)
-	company = str(website)
-	url = str(link)
+	pizzaCompanies = [
+	["https://littlecaesars.com/","https://slickdeals.net/coupons/little-caesars/","littleCeasars"],
+	["https://www.papajohns.com/promotional-offers/","https://slickdeals.net/coupons/papa-johns/","papaJohns"],
+	["https://www.dominos.com","https://slickdeals.net/coupons/dominos-pizza/","dominos"],
+	["https://www.pizzahut.com/","https://slickdeals.net/coupons/pizza-hut/","pizzaHut"],
+	["https://www.marcos.com/","https://slickdeals.net/coupons/marcos-pizza/","marcosPizza"],
+	["https://www.papamurphys.com/","https://slickdeals.net/coupons/papa-murphys/","papaMurphys"],
+	["https://www.jetspizza.com","https://slickdeals.net/coupons/jets-pizza/","jetsPizza"],
+	["https://www.blazepizza.com","https://slickdeals.net/coupons/blaze-pizza/","blazePizza"],
+	["https://www.roundtablepizza.com","https://slickdeals.net/coupons/round-table-pizza/","roundTable"],
+	["https://www.chuckecheese.com/","https://slickdeals.net/coupons/chuck-e-cheese/","chuckEcheese"]
+	]
+
+	for pizzacompany in pizzaCompanies:
+		firm = str(pizzacompany[2])
+		company = str(pizzacompany[0])
+		url = str(pizzacompany[1])
 	
-	driver.get(url)
-	time.sleep(5)
-	deals = driver.find_elements_by_class_name("item.showDeals.code ")
-	for data in deals:
-		but1 = data.find_element_by_class_name("title.cpbtn").text
-		but2 = data.find_element_by_class_name("desc").text
-		but3 = data.find_element_by_class_name("buttonRight")
-		but4 = but3.find_element_by_tag_name("a")
-		but5 = but4.get_attribute("data-clipboard-text")
-		disc_type = data.find_element_by_class_name("badge.coupon").text
+		driver.get(url)
+		time.sleep(5)
+		deals = driver.find_elements_by_class_name("item.showDeals.code ")
+		for data in deals:
+			but1 = data.find_element_by_class_name("title.cpbtn").text
+			but2 = data.find_element_by_class_name("desc").text
+			but3 = data.find_element_by_class_name("buttonRight")
+			but4 = but3.find_element_by_tag_name("a")
+			but5 = but4.get_attribute("data-clipboard-text")
+			disc_type = data.find_element_by_class_name("badge.coupon").text
 
 
-		print(but1, but2, but5, disc_type)
+			print(but1, but2, but5, disc_type)
 
-		response = saveToCloud(firm, company, but1, but2, but5, disc_type)
+			response = saveToCloud(firm, company, but1, but2, but5, disc_type)
 
-		print(response)
+			print(response)
 		
 	
 
-	discount = driver.find_elements_by_class_name("item.showDeals.discount  ")
-	for data in discount:
-		but1 = data.find_element_by_class_name("title.cpbtn").text
-		but2 = data.find_element_by_class_name("desc").text
-		disctype = data.find_element_by_class_name("badge.discount").text
-		but5 = "Get offer on website"
+		discount = driver.find_elements_by_class_name("item.showDeals.discount  ")
+		for data in discount:
+			but1 = data.find_element_by_class_name("title.cpbtn").text
+			but2 = data.find_element_by_class_name("desc").text
+			disctype = data.find_element_by_class_name("badge.discount").text
+			but5 = "Get offer on website"
 
-		print(but1, but2, but5, disctype)
+			print(but1, but2, but5, disctype)
 
-		response = saveToCloud(firm, company, but1, but2, but5, disctype)
+			response = saveToCloud(firm, company, but1, but2, but5, disctype)
 
-		print(response)
+			print(response)
 
-	return driver
+		return driver
 
 
 
@@ -133,70 +147,16 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 	return response
 
 
-def major():
-	marcos()
 
-
-
-
-def marcos():
-	print("marcosPizza")
-	firm = "marcosPizza"
-	website = "https://www.marcos.com/"
-	url = "https://slickdeals.net/coupons/marcos-pizza/"
-	driver = chrome_drive(firm, website, url)
-	papaMurphys(driver)
-
-
-
-def papaMurphys(driver):
-	print("papaMurphy's")
-	website = "https://www.papamurphys.com/"
-	url = "https://slickdeals.net/coupons/papa-murphys/"
-	firm = "papaMurphys"
-	chrome_drive(firm, website, url)
-	jetsPizza(driver)
-
-
-
-
-def jetsPizza(driver):
-	print("jetsPizza")
-	website = "https://www.jetspizza.com"
-	url = "https://slickdeals.net/coupons/jets-pizza/"
-	firm = "jetsPizza"
-	chrome_drive(firm, website, url)
-	blazePizza()
-
-
-def blazePizza(driver):
-	print("blazePizza")
-	website = "https://www.blazepizza.com"
-	url = "https://slickdeals.net/coupons/blaze-pizza/"
-	firm = "blazePizza"
-	chrome_drive(firm, website, url)
-	print("Closing chrome tabs")
-	roundTable()
-
-
-
-def roundTable(driver):
-	print("roundTablePizza")
-	website = "https://www.roundtablepizza.com"
-	url = "https://slickdeals.net/coupons/round-table-pizza/"
-	firm = "roundTable"
-	chrome_drive(firm, website, url)
-	print("Closing chrome tabs")
+#company names
+def main():
+	
+	chrome_drive()
 	driver.close()
 	cicis()
 
 
-
-
-
-
-
-
+	
 def cicis():
 	response = ciciPizza()
 	caliKitchen()
@@ -219,6 +179,14 @@ def sBarro():
 	firm = "sbarro"
 	website = "https://sbarro.com/"
 	response = crawl_exctract(url, firm, website)
+
+
+
+
+
+
+
+
 
 
 

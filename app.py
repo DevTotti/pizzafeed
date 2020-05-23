@@ -2,8 +2,9 @@ from flask import Flask, jsonify, request, render_template
 from datetime import datetime
 from fetchData import *
 import schedule as sc
-from data import *
-from data1 import *
+from optimized import *
+"""from data import *
+from data1 import *"""
 
 
 app = Flask(__name__)
@@ -45,7 +46,7 @@ def index():
 		#sc.run_pending()
 		main()
 		time.sleep(90)
-		major()
+		#major()
 		time.sleep(1800)
 
 

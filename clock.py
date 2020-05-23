@@ -1,5 +1,5 @@
-from apscheduler.schedulers.blocking import BlockingScheduler
-from data import *
+"""from apscheduler.schedulers.blocking import BlockingScheduler
+from optimized import *
 
 sched = BlockingScheduler()
 
@@ -9,9 +9,10 @@ sched = BlockingScheduler()
 def index():
 	#sc.run_pending()
 	main()
-	time.sleep(90)
-	major()
-	time.sleep(300)
+
 
 
 sched.start()
+"""
+
+#clock: python clock.py
