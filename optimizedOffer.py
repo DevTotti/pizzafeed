@@ -33,9 +33,6 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
-#from marco import *
-from cici import *
-#from offers import *
 
 
 
@@ -46,58 +43,58 @@ def chrome_drive():
 
 	driver.wait = WebDriverWait(driver, 5)
 
-	pizzaCompanies = [
-	["https://littlecaesars.com/","https://slickdeals.net/coupons/little-caesars/","littleCeasars"],
-	["https://www.papajohns.com/promotional-offers/","https://slickdeals.net/coupons/papa-johns/","papaJohns"],
-	["https://www.dominos.com","https://slickdeals.net/coupons/dominos-pizza/","dominos"],
-	["https://www.pizzahut.com/","https://slickdeals.net/coupons/pizza-hut/","pizzaHut"],
-	["https://www.marcos.com/","https://slickdeals.net/coupons/marcos-pizza/","marcosPizza"],
-	["https://www.papamurphys.com/","https://slickdeals.net/coupons/papa-murphys/","papaMurphys"],
-	["https://www.jetspizza.com","https://slickdeals.net/coupons/jets-pizza/","jetsPizza"],
-	["https://www.blazepizza.com","https://slickdeals.net/coupons/blaze-pizza/","blazePizza"],
-	["https://www.roundtablepizza.com","https://slickdeals.net/coupons/round-table-pizza/","roundTable"],
-	["https://www.chuckecheese.com/","https://slickdeals.net/coupons/chuck-e-cheese/","chuckEcheese"]
-	]
-
-	for pizzacompany in pizzaCompanies:
-		firm = str(pizzacompany[2])
-		company = str(pizzacompany[0])
-		url = str(pizzacompany[1])
-	
-		driver.get(url)
-		time.sleep(5)
-		deals = driver.find_elements_by_class_name("item.showDeals.code ")
-		for data in deals:
-			but1 = data.find_element_by_class_name("title.cpbtn").text
-			but2 = data.find_element_by_class_name("desc").text
-			but3 = data.find_element_by_class_name("buttonRight")
-			but4 = but3.find_element_by_tag_name("a")
-			but5 = but4.get_attribute("data-clipboard-text")
-			disc_type = data.find_element_by_class_name("badge.coupon").text
-
-
-			print(but1, but2, but5, disc_type)
-
-			response = saveToCloud(firm, company, but1, but2, but5, disc_type)
-
-			print(response)
-		
-	
-
-		discount = driver.find_elements_by_class_name("item.showDeals.discount  ")
-		for data in discount:
-			but1 = data.find_element_by_class_name("title.cpbtn").text
-			but2 = data.find_element_by_class_name("desc").text
-			disctype = data.find_element_by_class_name("badge.discount").text
-			but5 = "Get offer on website"
-
-			print(but1, but2, but5, disctype)
-
-			response = saveToCloud(firm, company, but1, but2, but5, disctype)
-
-			print(response)
 
 	return driver
+
+
+def get_data(driver):
+
+	pizzaCompanies = [
+	["https://sbarro.com/","https://www.offers.com/sbarro/","sbarro"],
+	["https://www.cpk.com/","https://www.offers.com/california-pizza-kitchen/","cpkPizza"]
+	]	
+
+	for pizzaCompany in pizzaCompanies:
+		firm = str(pizzaCompany[2])
+		company = str(pizzaCompany[0])
+		url = str(pizzaCompany[1])
+
+
+		driver.get(url)
+	
+		stats = driver.find_element_by_id("merchant-stats")
+		count = stats.find_element_by_class_name("value").text
+	
+		blocks = driver.find_elements_by_class_name("offerstrip")
+		total = int(count)
+
+		for block in blocks[0:total]:
+			block = block.text
+			block = block.split("\n")
+		
+			if 'CODE:' in block:
+				couponCode = block[6]
+				disc_type = "COUPON"
+				disc = block[0]
+				summary = block[3]
+
+			elif block[0] == 'SALE':
+				couponCode = "Get Offers on website and stores"
+				disc_type = "SALES & OFFERS"
+				summary = block[1]
+				disc = block[3]
+
+
+
+			print(couponCode, disc, disc_type, summary)
+			response = saveToCloud(firm,company,disc,summary,couponCode,disc_type)
+
+
+	return driver
+
+
+
+
 
 
 
@@ -148,31 +145,18 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 
 
 
-#company names
-def main():
-	
+
+
+
+def major():
 	driver = chrome_drive()
+	driver = get_data(driver)
 	driver.close()
-	cicis()
-
-
-	
-def cicis():
-	response = ciciPizza()
-	
-	
 
 
 
 
-
-
-
-
-
-
-
-
+		
 
 
 

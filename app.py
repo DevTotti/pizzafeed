@@ -3,6 +3,7 @@ from datetime import datetime
 from fetchData import *
 import schedule as sc
 from optimized import *
+from optimizedOffer import *
 """from data import *
 from data1 import *"""
 
@@ -46,7 +47,7 @@ def index():
 		#sc.run_pending()
 		main()
 		time.sleep(90)
-		#major()
+		major()
 		time.sleep(1800)
 
 
