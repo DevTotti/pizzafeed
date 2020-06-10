@@ -30,7 +30,8 @@ chrome_options.binary_location = chrome_bin
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
+#app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-lnbg3.mongodb.net/pizzas?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 #from marco import *
