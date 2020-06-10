@@ -5,7 +5,7 @@ from flask import Flask
 try:
 	app = Flask(__name__)
 	#app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
-	app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-lnbg3.mongodb.net/pizzas?retryWrites=true&w=majority"
+	app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-3gczm.mongodb.net/pizzas?retryWrites=true&w=majority"
 	mongo = PyMongo(app)
 	print("Connection Successful!")
 
