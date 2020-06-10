@@ -3,8 +3,8 @@ from datetime import datetime
 from fetchData import *
 import schedule as sc
 from optimized import *
-"""from data import *
-from data1 import *"""
+#from optimizedOffer import *
+
 
 
 app = Flask(__name__)
@@ -47,7 +47,7 @@ def index():
 		main()
 		time.sleep(90)
 		#major()
-		time.sleep(1800)
+		#time.sleep(1800)
 
 
 if __name__ == "__main__":

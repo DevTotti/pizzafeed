@@ -7,10 +7,11 @@ import re
 
 from flask_pymongo import PyMongo
 from flask import Flask
-app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
-mongo = PyMongo(app)
 
+app = Flask(__name__)
+#app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-lnbg3.mongodb.net/pizzas?retryWrites=true&w=majority"
+mongo = PyMongo(app)
 
 
 

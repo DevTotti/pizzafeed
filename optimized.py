@@ -30,12 +30,13 @@ chrome_options.binary_location = chrome_bin
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
+#app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-lnbg3.mongodb.net/pizzas?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 #from marco import *
 from cici import *
-from offers import *
+#from offers import *
 
 
 
@@ -159,37 +160,4 @@ def main():
 	
 def cicis():
 	response = ciciPizza()
-	caliKitchen()
 	
-
-
-def caliKitchen():
-	print("california-pizza-kitchen")
-	url = "https://www.offers.com/california-pizza-kitchen/"
-	firm = "cpkPizza"
-	website = "https://www.cpk.com/"
-	response = crawl_exctract(url, firm, website)
-	sBarro()
-
-
-
-def sBarro():
-	print("sBarro pizza")
-	url = "https://www.offers.com/sbarro/"
-	firm = "sbarro"
-	website = "https://sbarro.com/"
-	response = crawl_exctract(url, firm, website)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
