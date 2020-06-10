@@ -3,7 +3,7 @@ from datetime import datetime
 from fetchData import *
 import schedule as sc
 from optimized import *
-from optimizedOffer import *
+#from optimizedOffer import *
 
 
 
