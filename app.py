@@ -33,7 +33,31 @@ def fetchData():
 		else:
 			response = {"response":response}
 			return jsonify(response)
+
+
+	else:
+		return {
+			"message":"invalid request"
+		}
 			
+
+@app.route("/fetch/category", methods = ['POST'])
+def categorize():
+	if request.method == 'POST':
+		category = request.get_json()['category']
+
+		if category == 'toppings':
+			response = queryDB()
+
+			feedback = toppingSort(response, category)
+
+			return feedback
+
+		elif category == 'size':
+			pass
+
+
+
 
 
 

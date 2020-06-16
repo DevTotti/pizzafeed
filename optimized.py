@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 import time, os
 #import schedule as sc
-print("Working")
+print("Working slickdeals")
 from flask_pymongo import PyMongo
 from flask import Flask
 
