@@ -284,7 +284,9 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 
 
 def major():
+	print("Calling OptimizedOffer python file")
+	time.slee(5)
+	
 	driver = chrome_drive()
 	driver = get_data(driver)
 	driver.close()
-

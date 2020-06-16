@@ -151,6 +151,8 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 
 #company names
 def main():
+	print("Calling Optimized python file")
+	time.sleep(5)
 	
 	driver = chrome_drive()
 	driver.close()

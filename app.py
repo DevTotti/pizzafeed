@@ -3,7 +3,7 @@ from datetime import datetime
 from fetchData import *
 import schedule as sc
 from optimized import *
-#from optimizedOffer import *
+from optimizedOffer import *
 
 
 
@@ -46,8 +46,8 @@ def index():
 		#sc.run_pending()
 		main()
 		time.sleep(90)
-		#major()
-		#time.sleep(1800)
+		major()
+		time.sleep(1800)
 
 
 if __name__ == "__main__":
