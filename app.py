@@ -45,29 +45,113 @@ def fetchData():
 def categorize():
 	if request.method == 'POST':
 		category = request.get_json()['category']
+		response = queryDB()
 
-		if category == 'toppings':
-			response = queryDB()
+		response = {"response":response}
+
+		if category == 'topping':
 
 			feedback = toppingSort(response, category)
 
-			return feedback
+		elif category == 'size':
+
+			feedback = sizesort(response, category)
+
+		else:
+
+			feedback = {"message":"invalid category"}
+
+	else:
+
+		feedback = {"message":"invalid api request"}
+
+
+	return feedback
+
+
+
+
+@app.route('/fetch/category/company', methods = ['POST'])
+def categorizeCompany():
+	if request.method == 'POST':
+		category = request.get_json()['category']
+		company = request.get_json()['comapny']
+
+		resonse = queryCompany(company)
+		response = {"response":response}
+
+		if category == 'toppings':
+
+			feedback = toppingSort(response, category)
 
 		elif category == 'size':
-			pass
+
+			feedback = toppingSort(response, category)
+
+		else:
+
+			feedback = {"message":"invalid category"}
+
+
+	else:
+
+		feedback = {"message":"invalid api request"}
+			
+
+
+	return feedback
+
+
+
+
+@app.route('/admin/fetch/category/topping', methods = ['GET'])
+def adminToppingCategory():
+	if request.method == 'GET':
+		category = "topping"
+		response = queryDB()
+		response = {"response":response}
+		feedback = toppingSort(response, category)
+
+		
+
+	else:
+		feedback = {"message":"invalid api request"}
+
+
+	return feedback
+
+
+
+
+@app.route('/admin/fetch/category/size', methods = ['GET'])
+def adminSizeCategory():
+	if request.method == 'GET':
+		category = "size"
+		response = queryDB()
+		response = {"response":response}
+		feedback = sizesort(response, category)
+
+		
+
+	else:
+
+		feedback = {"message":"invalid api request"}
+
+
+	return feedback
 
 
 
 
 
 
+#never call this route if you're not an admin. You are basically going to break something"
 @app.route('/fuckoff', methods = ["GET"])
 def index():
 
-	#sc.every(30).minutes.do(main)
 
 	while True:
-		#sc.run_pending()
+		
 		main()
 		time.sleep(90)
 		major()
