@@ -65,7 +65,7 @@ def fetchData():
 
 			response = {"response":response}
 
-			feedback = toppingSort(response, category)
+			feedback = sizesort(response, category)
 
 			feedback = feedback[category_type]
 
@@ -140,7 +140,7 @@ def categorizeCompany():
 
 		elif category == 'size':
 
-			feedback = toppingSort(response, category)
+			feedback = sizesort(response, category)
 
 		else:
 
