@@ -44,38 +44,30 @@ def fetchData():
 	elif request.method == 'POST':
 		company = request.get_json()["company"]
 		discountType =  request.get_json()["discountType"]
-		category = request.get_json()["category"]
-		category_type = request.get_json()["categoryType"]
+		topping = request.get_json()["topping"]
+		size = request.get_json()["size"]
 
 		response = queryParams(company, discountType)
 
-		if category == 'topping':
+		#if category == 'topping':
+		category = "topping/size"
 
-			response = {"response":response}
+		response = {"response":response}
 
-			feedback = toppingSort(response, category)
+		feedback = toppingSort(response, category)
 
-			feedback = feedback[category_type]
+		feedback = feedback[topping]
 
-			feedback = {"response":feedback}
+		response = {"response":feedback}
 
-			return feedback
+		feedback = sizesort(response, category)
 
-		elif category == 'size':
+		feedback = feedback[size]
 
-			response = {"response":response}
+		feedback = {"response":feedback}
 
-			feedback = sizesort(response, category)
+		return feedback
 
-			feedback = feedback[category_type]
-
-			feedback = {"response":feedback}
-
-			return feedback
-
-		else:
-
-			feedback = {"message":"invalid category"}
 		
 		
 		"""		if request.get_json()["page"] != "":
@@ -131,7 +123,7 @@ def categorizeCompany():
 		category = request.get_json()['category']
 		company = request.get_json()['comapny']
 
-		resonse = queryCompany(company)
+		response = queryCompany(company)
 		response = {"response":response}
 
 		if category == 'topping':

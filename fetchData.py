@@ -157,11 +157,11 @@ def toppingSort(response, category):
 
 
 	feedback = {
-		"oneTopping":oneTopping,
-		"twoTopping":twoTopping,
-		"threeTopping":threeTopping,
-		"fourTopping":fourTopping,
-		"fiveTopping":fiveTopping,
+		1:oneTopping,
+		2:twoTopping,
+		3:threeTopping,
+		4:fourTopping,
+		5:fiveTopping,
 		"otherTopping":others
 		}
 
@@ -226,7 +226,7 @@ def sizesort(response, category):
 
 def queryCompany(company):
 	database = []
-	company = str(firm)
+	company = str(company)
 	
 	try:
 		db = mongo.db.coupons
