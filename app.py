@@ -90,7 +90,7 @@ def fetchData():
 
 
 
-@app.route("admin/fetch", methods=["GET","POST"])
+@app.route("/admin/fetch", methods=["GET","POST"])
 def oldFetch():
 	if request.method == 'GET':
 		response = queryDB()
