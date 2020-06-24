@@ -31,8 +31,8 @@ swagger = Swagger(app, config = swagger_config)
 
 
 @app.route("/fetch", methods = ["GET", "POST"])
-@swag_from("swagger_config.yml", methods = ['POST'])
-@swag_from("swagger_config_get.yml", methods = ['GET'])
+@swag_from("/swaggerdocs/swagger_config.yml", methods = ['POST'])
+@swag_from("/swaggerdocs/swagger_config_get.yml", methods = ['GET'])
 def fetchData():
 
 	if request.method == 'GET':
@@ -70,22 +70,52 @@ def fetchData():
 
 		
 		
-		"""		if request.get_json()["page"] != "":
-					page = request.get_json()["page"]
-					response = paginate(page, response)
-					response = {"response":response}
-					return jsonify(response)
-
-				else:
-					response = {"response":response}
-					return jsonify(response)"""
+		"""if request.get_json()["page"] != "":
+									page = request.get_json()["page"]
+									response = paginate(page, response)
+									response = {"response":response}
+									return jsonify(response)
+						
+								else:
+									response = {"response":response}
+									return jsonify(response)"""
 
 
 	else:
 		return {
 			"message":"invalid request"
 		}
+
+
+
+
+
+@app.route("admin/fetch", methods=["GET","POST"])
+def oldFetch():
+	if request.method == 'GET':
+		response = queryDB()
+		response = {"response": response}
+
+		return jsonify(response)
+
+	elif request.method == 'POST':
+		company = request.get_json()["company"]
+		discountType =  request.get_json()["discountType"]
+		response = queryParams(company, discountType)
+		
+		if request.get_json()["page"] != "":
+			page = request.get_json()["page"]
+			response = paginate(page, response)
+			response = {"response":response}
+			return jsonify(response)
+
+		else:
+			response = {"response":response}
+			return jsonify(response)
 			
+
+
+
 
 @app.route("/fetch/category", methods = ['POST'])
 def categorize():
