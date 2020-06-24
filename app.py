@@ -64,21 +64,18 @@ def fetchData():
 
 		feedback = feedback[size]
 
-		feedback = {"response":feedback}
-
-		return feedback
-
+		#feedback = {"response":feedback}
 		
 		
-		"""if request.get_json()["page"] != "":
-									page = request.get_json()["page"]
-									response = paginate(page, response)
-									response = {"response":response}
-									return jsonify(response)
-						
-								else:
-									response = {"response":response}
-									return jsonify(response)"""
+		if request.get_json()["page"] != "":
+			page = request.get_json()["page"]
+			response = paginate(page, feedback)
+			response = {"response":response}
+			return jsonify(response)
+
+		else:
+			response = {"response":feedback}
+			return jsonify(response)
 
 
 	else:
