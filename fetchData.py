@@ -259,7 +259,7 @@ def sortPreference(database):
 	feedback = {
 		"stuffed_crust":stuffed,
 		"regular":regular,
-		"others"others
+		"others":others
 	}
 
 
