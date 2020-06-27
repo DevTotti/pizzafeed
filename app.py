@@ -46,6 +46,7 @@ def fetchData():
 		discountType =  request.get_json()["discountType"]
 		topping = request.get_json()["topping"]
 		size = request.get_json()["size"]
+		preference = request.get_json()["preferences"]
 
 		response = queryParams(company, discountType)
 
@@ -57,6 +58,12 @@ def fetchData():
 		feedback = toppingSort(response, category)
 
 		feedback = feedback[topping]
+
+		response = {"response":feedback}
+
+		sortingpref = sortPreference(response)
+
+		feedback = sortingpref[preference]
 
 		response = {"response":feedback}
 

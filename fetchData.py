@@ -178,6 +178,7 @@ def sizesort(response, category):
 	large = []
 	medium = []
 	small = []
+	xlarge = []
 	others = []
 
 	database = response
@@ -205,6 +206,13 @@ def sizesort(response, category):
 			small.append(data)
 			pass
 
+
+		elif 'extralarge' in summary or 'extra large' in summary or 'xtralarge' in summary or 'xtra large' in summary:
+			category = 'extralarge'
+			data.update({"size":category})
+			xlarge.append(data)
+			pass
+
 		else:
 			category = 'others'
 			data.update({"size":category})
@@ -213,6 +221,7 @@ def sizesort(response, category):
 
 
 	feedback = {
+		"extralarge":xlarge,
 		"large":large,
 		"medium":medium,
 		"small":small,
@@ -221,6 +230,43 @@ def sizesort(response, category):
 
 
 	return feedback
+
+
+def sortPreference(database):
+	sortedData = database
+	stuffed = []
+	regular = []
+	others = []
+
+	response = sortedData['response']
+
+	for data in sortedData:
+		summary = data['pizzaSummary']
+
+		if "stuffed crust" in summary:
+			data.update({"preference":"stuffed_crust"})
+			stuffed.append(data)
+
+		elif "regular" in summary:
+			data.update({"preference":"regular"})
+			stuffed.append(data)
+
+		else:
+			data.update({"preference":"other"})
+			others.append(data)
+
+
+	feedback = {
+		"stuffed_crust":stuffed,
+		"regular":regular,
+		"others"others
+	}
+
+
+
+	return feedback
+
+
 
 
 
