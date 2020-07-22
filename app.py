@@ -44,49 +44,45 @@ def fetchData():
 	elif request.method == 'POST':
 		company = request.get_json()["company"]
 		discountType =  request.get_json()["discountType"]
-		category = request.get_json()["category"]
-		category_type = request.get_json()["categoryType"]
+		topping = request.get_json()["topping"]
+		size = request.get_json()["size"]
+		#preference = request.get_json()["preferences"]
 
 		response = queryParams(company, discountType)
 
-		if category == 'topping':
+		#if category == 'topping':
+		category = "topping/size"
 
+		response = {"response":response}
+
+		feedback = toppingSort(response, category)
+
+		feedback = feedback[topping]
+
+		#response = {"response":feedback}
+
+		#sortingpref = sortPreference(response)
+
+		#feedback = sortingpref[preference]
+
+		response = {"response":feedback}
+
+		feedback = sizesort(response, category)
+
+		feedback = feedback[size]
+
+		#feedback = {"response":feedback}
+		
+		
+		if request.get_json()["page"] != "":
+			page = request.get_json()["page"]
+			response = paginate(page, feedback)
 			response = {"response":response}
-
-			feedback = toppingSort(response, category)
-
-			feedback = feedback[category_type]
-
-			feedback = {"response":feedback}
-
-			return feedback
-
-		elif category == 'size':
-
-			response = {"response":response}
-
-			feedback = sizesort(response, category)
-
-			feedback = feedback[category_type]
-
-			feedback = {"response":feedback}
-
-			return feedback
+			return jsonify(response)
 
 		else:
-
-			feedback = {"message":"invalid category"}
-		
-		
-		"""		if request.get_json()["page"] != "":
-					page = request.get_json()["page"]
-					response = paginate(page, response)
-					response = {"response":response}
-					return jsonify(response)
-
-				else:
-					response = {"response":response}
-					return jsonify(response)"""
+			response = {"response":feedback}
+			return jsonify(response)
 
 
 	else:
