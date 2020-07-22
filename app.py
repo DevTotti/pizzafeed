@@ -31,8 +31,8 @@ swagger = Swagger(app, config = swagger_config)
 
 
 @app.route("/fetch", methods = ["GET", "POST"])
-@swag_from("/swaggerdocs/swagger_config.yml", methods = ['POST'])
-@swag_from("/swaggerdocs/swagger_config_get.yml", methods = ['GET'])
+@swag_from("swagger_yml/swagger_config.yml", methods = ['POST'])
+@swag_from("swagger_yml/swagger_config_get.yml", methods = ['GET'])
 def fetchData():
 
 	if request.method == 'GET':
@@ -44,84 +44,59 @@ def fetchData():
 	elif request.method == 'POST':
 		company = request.get_json()["company"]
 		discountType =  request.get_json()["discountType"]
-		topping = request.get_json()["topping"]
-		size = request.get_json()["size"]
-		#preference = request.get_json()["preferences"]
+		category = request.get_json()["category"]
+		category_type = request.get_json()["categoryType"]
 
 		response = queryParams(company, discountType)
 
-		#if category == 'topping':
-		category = "topping/size"
+		if category == 'topping':
 
-		response = {"response":response}
-
-		feedback = toppingSort(response, category)
-
-		feedback = feedback[topping]
-
-		#response = {"response":feedback}
-
-		#sortingpref = sortPreference(response)
-
-		#feedback = sortingpref[preference]
-
-		response = {"response":feedback}
-
-		feedback = sizesort(response, category)
-
-		feedback = feedback[size]
-
-		#feedback = {"response":feedback}
-		
-		
-		if request.get_json()["page"] != "":
-			page = request.get_json()["page"]
-			response = paginate(page, feedback)
 			response = {"response":response}
-			return jsonify(response)
+
+			feedback = toppingSort(response, category)
+
+			feedback = feedback[category_type]
+
+			feedback = {"response":feedback}
+
+			return feedback
+
+		elif category == 'size':
+
+			response = {"response":response}
+
+			feedback = sizesort(response, category)
+
+			feedback = feedback[category_type]
+
+			feedback = {"response":feedback}
+
+			return feedback
 
 		else:
-			response = {"response":feedback}
-			return jsonify(response)
+
+			feedback = {"message":"invalid category"}
+		
+		
+		"""		if request.get_json()["page"] != "":
+					page = request.get_json()["page"]
+					response = paginate(page, response)
+					response = {"response":response}
+					return jsonify(response)
+
+				else:
+					response = {"response":response}
+					return jsonify(response)"""
 
 
 	else:
 		return {
 			"message":"invalid request"
 		}
-
-
-
-
-
-@app.route("/admin/fetch", methods=["GET","POST"])
-def oldFetch():
-	if request.method == 'GET':
-		response = queryDB()
-		response = {"response": response}
-
-		return jsonify(response)
-
-	elif request.method == 'POST':
-		company = request.get_json()["company"]
-		discountType =  request.get_json()["discountType"]
-		response = queryParams(company, discountType)
-		
-		if request.get_json()["page"] != "":
-			page = request.get_json()["page"]
-			response = paginate(page, response)
-			response = {"response":response}
-			return jsonify(response)
-
-		else:
-			response = {"response":response}
-			return jsonify(response)
 			
 
-
-
-
 @app.route("/fetch/category", methods = ['POST'])
+@swag_from("swagger_yml/swagger_category_config.yml", methods = ['POST'])
 def categorize():
 	if request.method == 'POST':
 		category = request.get_json()['category']
@@ -152,10 +127,11 @@ def categorize():
 
 
 @app.route('/fetch/category/company', methods = ['POST'])
+@swag_from("swagger_yml/swagger_category_company_config.yml", methods = ['POST'])
 def categorizeCompany():
 	if request.method == 'POST':
 		category = request.get_json()['category']
-		company = request.get_json()['comapny']
+		company = request.get_json()['company']
 
 		response = queryCompany(company)
 		response = {"response":response}
@@ -185,6 +161,7 @@ def categorizeCompany():
 
 
 @app.route('/admin/fetch/category/topping', methods = ['GET'])
+@swag_from("swagger_yml/swagger_category_topping_config.yml", methods = ['GET'])
 def adminToppingCategory():
 	if request.method == 'GET':
 		category = "topping"
@@ -204,6 +181,7 @@ def adminToppingCategory():
 
 
 @app.route('/admin/fetch/category/size', methods = ['GET'])
+@swag_from("swagger_yml/swagger_category_size_config.yml", methods = ['GET'])
 def adminSizeCategory():
 	if request.method == 'GET':
 		category = "size"
