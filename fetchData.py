@@ -117,100 +117,118 @@ def toppingSort(response, category):
 
 	for data in response:
 		summary = data['pizzaSummary']
+		print(data)
+
 
 		if 'one topping' in summary :
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'one-topping' in summary:
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'one-Topping' in summary:
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'one Topping' in summary :
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)	
 			pass
 
 		elif '1-Topping' in summary :
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)	
 			pass
 
 		elif '1 Topping' in summary :
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)		
 			pass
 
 		elif '1-topping' in summary :
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)	
 			pass	
 				
 		elif '1 topping' in summary:
 			category = '1-Topping'
 			data.update({"topping":category})
+			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'two topping' in summary:
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif 'two-topping' in summary :
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif 'two-Topping' in summary :
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif 'two Topping' in summary :
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2-Topping' in summary :
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2 Topping' in summary :
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2-topping' in summary :
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2 topping' in summary :
 			categoy = '2-Topping'
 			data.update({"topping":category})
+			print(data)
 			twoTopping.append(data)
 			pass
 
@@ -218,96 +236,112 @@ def toppingSort(response, category):
 		elif 'three topping' in summary : 
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif 'three-topping' in summary :
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif 'three-Topping' in summary :
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif 'three Topping' in summary :
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3-Topping' in summary :
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3 Topping' in summary :
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3-topping' in summary :
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3 topping' in summary:
 			category = '3-Topping'
 			data.update({"topping":category})
+			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif 'four topping' in summary : 
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif 'four-topping' in summary :
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif 'four-Topping' in summary :
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif 'four Topping' in summary :
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4-Topping' in summary :
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4 Topping' in summary :
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4-topping' in summary :
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4 topping' in summary:
 			category = '4-Topping'
 			data.update({"topping":category})
+			print(data)
 			fourTopping.append(data)
 			pass
 
@@ -315,48 +349,56 @@ def toppingSort(response, category):
 		elif 'five topping' in summary : 
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif 'five-topping' in summary :
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif 'five-Topping' in summary :
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif 'five Topping' in summary :
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5-Topping' in summary :
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5 Topping' in summary :
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5-topping' in summary :
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5 topping' in summary:
 			category = '5-Topping'
 			data.update({"topping":category})
+			print(data)
 			fiveTopping.append(data)
 			pass
 
@@ -365,16 +407,17 @@ def toppingSort(response, category):
 		else:
 			category = 'others'
 			data.update({"topping":category})
+			print(data)
 			others.append(data)
 			pass
 
 
 	feedback = {
-		1:oneTopping,
-		2:twoTopping,
-		3:threeTopping,
-		4:fourTopping,
-		5:fiveTopping,
+		"1":oneTopping,
+		"2":twoTopping,
+		"3":threeTopping,
+		"4":fourTopping,
+		"5":fiveTopping,
 		"otherTopping":others
 		}
 
