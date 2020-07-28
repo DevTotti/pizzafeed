@@ -30,6 +30,9 @@ swagger_config = {
 swagger = Swagger(app, config = swagger_config)
 
 
+
+
+
 @app.route("/fetch", methods = ["GET", "POST"])
 @swag_from("swagger_yml/swagger_config.yml", methods = ['POST'])
 @swag_from("swagger_yml/swagger_config_get.yml", methods = ['GET'])
@@ -46,11 +49,9 @@ def fetchData():
 		discountType =  request.get_json()["discountType"]
 		topping = request.get_json()["topping"]
 		size = request.get_json()["size"]
-		#preference = request.get_json()["preferences"]
 
 		response = queryParams(company, discountType)
 
-		#if category == 'topping':
 		category = "topping/size"
 
 		response = {"response":response}
@@ -59,19 +60,12 @@ def fetchData():
 
 		feedback = feedback[topping]
 
-		#response = {"response":feedback}
-
-		#sortingpref = sortPreference(response)
-
-		#feedback = sortingpref[preference]
-
 		response = {"response":feedback}
 
 		feedback = sizesort(response, category)
 
 		feedback = feedback[size]
 
-		#feedback = {"response":feedback}
 		
 		
 		if request.get_json()["page"] != "":
