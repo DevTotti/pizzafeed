@@ -47,7 +47,7 @@ def fetchData():
 	elif request.method == 'POST':
 		company = request.get_json()["company"]
 		discountType =  request.get_json()["discountType"]
-		topping = request.get_json()["topping"]
+		topping = str(request.get_json()["topping"])
 		size = request.get_json()["size"]
 
 		response = queryParams(company, discountType)
@@ -58,7 +58,7 @@ def fetchData():
 
 		feedback = toppingSort(response, category)
 
-		feedback = feedback[topping]
+		feedback = feedback[str(topping)]
 
 		response = {"response":feedback}
 
@@ -66,8 +66,8 @@ def fetchData():
 
 		feedback = feedback[size]
 
-		
-		
+
+
 		if request.get_json()["page"] != "":
 			page = request.get_json()["page"]
 			response = paginate(page, feedback)
@@ -83,7 +83,7 @@ def fetchData():
 		return {
 			"message":"invalid request"
 		}
-			
+
 
 @app.route("/fetch/category", methods = ['POST'])
 @swag_from("swagger_yml/swagger_category_config.yml", methods = ['POST'])
@@ -142,7 +142,7 @@ def categorizeCompany():
 	else:
 
 		feedback = {"message":"invalid api request"}
-			
+
 
 
 	return feedback
@@ -159,7 +159,7 @@ def adminToppingCategory():
 		response = {"response":response}
 		feedback = toppingSort(response, category)
 
-		
+
 
 	else:
 		feedback = {"message":"invalid api request"}
@@ -179,7 +179,7 @@ def adminSizeCategory():
 		response = {"response":response}
 		feedback = sizesort(response, category)
 
-		
+
 
 	else:
 
@@ -199,7 +199,7 @@ def index():
 
 
 	while True:
-		
+
 		main()
 		time.sleep(90)
 		major()
@@ -207,7 +207,4 @@ def index():
 
 
 if __name__ == "__main__":
-	app.run(debug = True, port = 5000)
-
-
-
+	app.run(debug = True, port = 9000)

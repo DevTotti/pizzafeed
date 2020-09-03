@@ -23,7 +23,7 @@ def queryDB():
 
 
 		for field in db.find():
-			
+
 			firm = str(field['company'])
 			companyName = str(field['websiteName'])
 			summary = str(field['pizzaSummary'])
@@ -36,10 +36,10 @@ def queryDB():
 			data = {"company":firm, "websiteName":companyName, "pizzaSummary": summary, "discount":discount, "couponCode":coupon, "discountType":discountType}
 			database.append(data)
 
-	
+
 	except Exception as error:
 		print("Collections retrieval failed!: "+str(error))
-		
+
 
 
 
@@ -73,8 +73,8 @@ def queryParams(firm, discountType):
 			else:
 				pass
 
-	
-	
+
+
 
 	except Exception as error:
 		print("Collections retrieval failed!: "+str(error))
@@ -94,7 +94,7 @@ def paginate(page, data):
 	data = database[start:stop]
 
 	response = data
-	
+
 	return response
 
 
@@ -122,282 +122,282 @@ def toppingSort(response, category):
 
 		if 'one topping' in summary :
 			category = '1-Topping'
-			
+
 			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'one-topping' in summary:
 			category = '1-Topping'
-			
+
 			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'one-Topping' in summary:
 			category = '1-Topping'
-			
+
 			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'one Topping' in summary :
 			category = '1-Topping'
-			
+
 			print(data)
-			oneTopping.append(data)	
+			oneTopping.append(data)
 			pass
 
 		elif '1-Topping' in summary :
 			category = '1-Topping'
-			
+
 			print(data)
-			oneTopping.append(data)	
+			oneTopping.append(data)
 			pass
 
 		elif '1 Topping' in summary :
 			category = '1-Topping'
-			
+
 			print(data)
-			oneTopping.append(data)		
+			oneTopping.append(data)
 			pass
 
 		elif '1-topping' in summary :
 			category = '1-Topping'
-			
+
 			print(data)
-			oneTopping.append(data)	
-			pass	
-				
+			oneTopping.append(data)
+			pass
+
 		elif '1 topping' in summary:
 			category = '1-Topping'
-			
+
 			print(data)
 			oneTopping.append(data)
 			pass
 
 		elif 'two topping' in summary:
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif 'two-topping' in summary :
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif 'two-Topping' in summary :
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif 'two Topping' in summary :
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2-Topping' in summary :
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2 Topping' in summary :
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2-topping' in summary :
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 		elif '2 topping' in summary :
 			categoy = '2-Topping'
-			
+
 			print(data)
 			twoTopping.append(data)
 			pass
 
 
-		elif 'three topping' in summary : 
+		elif 'three topping' in summary :
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif 'three-topping' in summary :
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif 'three-Topping' in summary :
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif 'three Topping' in summary :
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3-Topping' in summary :
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3 Topping' in summary :
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3-topping' in summary :
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
 		elif '3 topping' in summary:
 			category = '3-Topping'
-			
+
 			print(data)
 			threeTopping.append(data)
 			pass
 
-		elif 'four topping' in summary : 
+		elif 'four topping' in summary :
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif 'four-topping' in summary :
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif 'four-Topping' in summary :
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif 'four Topping' in summary :
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4-Topping' in summary :
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4 Topping' in summary :
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4-topping' in summary :
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 		elif '4 topping' in summary:
 			category = '4-Topping'
-			
+
 			print(data)
 			fourTopping.append(data)
 			pass
 
 
-		elif 'five topping' in summary : 
+		elif 'five topping' in summary :
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif 'five-topping' in summary :
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif 'five-Topping' in summary :
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif 'five Topping' in summary :
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5-Topping' in summary :
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5 Topping' in summary :
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5-topping' in summary :
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
 
 		elif '5 topping' in summary:
 			category = '5-Topping'
-			
+
 			print(data)
 			fiveTopping.append(data)
 			pass
@@ -406,7 +406,7 @@ def toppingSort(response, category):
 
 		else:
 			category = 'others'
-			
+
 			print(data)
 			others.append(data)
 			pass
@@ -444,7 +444,7 @@ def sizesort(response, category):
 	for data in response:
 		summary = data['pizzaSummary']
 
-		if 'large' in summary: 
+		if 'large' in summary:
 			category = 'Large'
 			data.update({"size":category})
 			large.append(data)
@@ -525,7 +525,7 @@ def sizesort(response, category):
 			data.update({"size":category})
 			xlarge.append(data)
 			pass
-						
+
 
 		else:
 			category = 'others'
@@ -587,7 +587,7 @@ def sortPreference(database):
 def queryCompany(company):
 	database = []
 	company = str(company)
-	
+
 	try:
 		db = mongo.db.coupons
 		print("Collections retrieval Successful! ")
@@ -618,12 +618,3 @@ def queryCompany(company):
 
 
 	return database
-
-
-
-
-
-
-
-
-
