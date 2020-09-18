@@ -116,36 +116,16 @@ def categorize():
 
 
 
-@app.route('/fetch/category/company', methods = ['POST'])
+@app.route('/fetch/discount/company', methods = ['POST'])
 @swag_from("swagger_yml/swagger_category_company_config.yml", methods = ['POST'])
 def categorizeCompany():
 	if request.method == 'POST':
-		category = request.get_json()['category']
+		discountType =  request.get_json()["discountType"]
 		company = request.get_json()['company']
 
-		response = queryCompany(company)
-		response = {"response":response}
-
-		if category == 'topping':
-
-			feedback = toppingSort(response, category)
-
-		elif category == 'size':
-
-			feedback = sizesort(response, category)
-
-		else:
-
-			feedback = {"message":"invalid category"}
-
-
-	else:
-
-		feedback = {"message":"invalid api request"}
-
-
-
-	return feedback
+		responses = queryParams(company, discountType)
+		response = {"response":responses}
+		return response
 
 
 
