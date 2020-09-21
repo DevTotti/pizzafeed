@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 import time, os
 #import schedule as sc
-print("Working")
+print("Working slickdeals")
 from flask_pymongo import PyMongo
 from flask import Flask
 
@@ -31,7 +31,7 @@ chrome_options.binary_location = chrome_bin
 
 app = Flask(__name__)
 #app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
-app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-lnbg3.mongodb.net/pizzas?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-3gczm.mongodb.net/pizzas?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 #from marco import *
@@ -43,6 +43,7 @@ from cici import *
 
 def chrome_drive():
 	#driver = webdriver.Chrome(executable_path = '/home/devtotti/Workspace/extensions/chromedriver_linux64/chromedriver', options=chrome_options)#for local test remove comments
+	#driver = webdriver.Chrome(executable_path = r"/home/morenikeji/Workspace/extensions/chromedriver_linux64/chromedriver")
 	driver = webdriver.Chrome(executable_path = CHROMEDRIVER_PATH ,options=chrome_options)#for deployment, remove comments
 
 	driver.wait = WebDriverWait(driver, 5)
@@ -64,7 +65,7 @@ def chrome_drive():
 		firm = str(pizzacompany[2])
 		company = str(pizzacompany[0])
 		url = str(pizzacompany[1])
-	
+
 		driver.get(url)
 		time.sleep(5)
 		deals = driver.find_elements_by_class_name("item.showDeals.code ")
@@ -82,8 +83,8 @@ def chrome_drive():
 			response = saveToCloud(firm, company, but1, but2, but5, disc_type)
 
 			print(response)
-		
-	
+
+
 
 		discount = driver.find_elements_by_class_name("item.showDeals.discount  ")
 		for data in discount:
@@ -151,13 +152,14 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 
 #company names
 def main():
-	
+	print("Calling Optimized python file")
+	time.sleep(5)
+
 	driver = chrome_drive()
 	driver.close()
 	cicis()
 
 
-	
+
 def cicis():
 	response = ciciPizza()
-	

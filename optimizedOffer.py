@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 import time, os
 #import schedule as sc
-print("Working")
+print("Working offer")
 from flask_pymongo import PyMongo
 from flask import Flask
 
@@ -31,7 +31,7 @@ chrome_options.binary_location = chrome_bin
 
 app = Flask(__name__)
 #app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
-app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-lnbg3.mongodb.net/pizzas?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-3gczm.mongodb.net/pizzas?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 
@@ -284,7 +284,9 @@ def saveToCloud(firm, ada, bada, cada, dada, fada):
 
 
 def major():
+	print("Calling OptimizedOffer python file")
+	time.sleep(5)
+	
 	driver = chrome_drive()
 	driver = get_data(driver)
 	driver.close()
-

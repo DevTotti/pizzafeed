@@ -1,0 +1,23 @@
+summary: "fetch Data"
+description: "fetch coupons and offers of pizza deals from database"
+consumes: 
+- "application/json"
+produces:
+- "application/json"
+parameters:
+- in: "body"
+  name: "body"
+  description: "Accepts the category(topping/size) and fetches all data in the category"
+  required: true
+  schema: 
+    type: "object"
+    properties: 
+      category:
+        type: "string"
+        format: "str"
+        example: "topping"
+
+
+responses:
+  405:
+    description: "Invalid Input"

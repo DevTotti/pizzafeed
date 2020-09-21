@@ -10,7 +10,7 @@ from flask import Flask
 
 app = Flask(__name__)
 #app.config["MONGO_URI"] = "mongodb+srv://devtotti:jankulovski@newclustera-c85ej.mongodb.net/pizzas?retryWrites=true&w=majority"
-app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-lnbg3.mongodb.net/pizzas?retryWrites=true&w=majority"
+app.config["MONGO_URI"] = "mongodb+srv://michael:Lagos12#@cluster0-3gczm.mongodb.net/pizzas?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 
@@ -30,15 +30,15 @@ def ciciPizza():
     #print(results)
 
     for item in results:
-    
+
         cp = item.find_all("div", {"class": "mk-text-block"})
         #pprint.pprint(cp)
 
         for e in cp:
             #cp = e.find_all("p", string = re.compile('^ENTER CODE.*' , re.IGNORECASE))
-        
+
             wn = url[:21]
-        
+
             try:
                 cp = e.contents[2].text
                 if cp == "":
@@ -49,7 +49,7 @@ def ciciPizza():
                     cp = cp
             except:
                 pass
-        
+
             try:
                 p_typ = e.contents[1].text
             except:
@@ -72,5 +72,3 @@ def ciciPizza():
                 response = "Failed!"
 
     return response
-        
-
